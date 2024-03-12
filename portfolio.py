@@ -1,22 +1,20 @@
-def test_multiplication():
-    # test that you can multiply a Dollar by a number and get the right amount.
-    #crear clase que sea dolar y un argumento que sea 5 y eso van a ser nuestros 5 dolares.
-    class Dollar:
+class Dollar:
         def __init__(self, amount):
-            self.amount = amount
+            self.__amount = amount
 
         def times(self, multiplier):
-            return Dollar(self.amount * multiplier)
-    #queremos traer un objeto de la clase dolar (instanciar el dolar en una cantidad que sea eso por multiplicar)
-
-    def test_multiplication():
-        # test that you can multiply a Dollar by a number and get the right amount.
-        five = Dollar(amount=5)
-        # a esos cinco usd le vamos a implementar el método multiplicacion
-        #este paso no es muy bueno porque modifica el objeto original
-        five.times(multiplier=2)
-        assert 10 == five.amount
-        #si el 5 no cambió, al multiplicarlo por 3 debería ser 15!
-        five.times(multiplier=3)
-        assert 15 == five.amount
+            return Dollar(self.__amount * multiplier)
         
+        def __eq__(self,dollar):
+            return self.__amount == dollar.__amount
+          
+def test_franc_multiplication():
+        five = Dollar(amount=5)
+        assert Dollar(amount=10) == five.times(multiplier=2)
+        assert Dollar(amount=15) == five.times(multiplier=3) 
+
+def test_equality():
+        assert Dollar(3)== Dollar(3)
+        assert Dollar(3)!= Dollar(4)
+
+        #modifico el test para que "amount" sea un atributo prviado (no modificable)
