@@ -6,7 +6,8 @@ def test_multiplication():
             self.amount = amount
 
         def times(self, multiplier):
-            self.amount *= multiplier
+            return Dollar(self.amount * multiplier)
+    #queremos traer un objeto de la clase dolar (instanciar el dolar en una cantidad que sea eso por multiplicar)
 
     def test_multiplication():
         # test that you can multiply a Dollar by a number and get the right amount.
